@@ -40,19 +40,24 @@ def clean_data(data):
 
     return x_df.to_numpy(), y_df.to_numpy()
 
-subscription_id = '30d182b7-c8c4-421c-8fa0-d3037ecfe6d2'
-resource_group = 'aml-quickstarts-113416'
-workspace_name = 'quick-starts-ws-113416'
+
+
+
+subscription_id = 'b4a122b5-b4d5-40e7-9878-57b87adf4a8b'
+resource_group = 'aml-quickstarts-113996'
+workspace_name = 'quick-starts-ws-113996'
+
+
 
 workspace = Workspace(subscription_id, resource_group, workspace_name)
 
-ds = Dataset.get_by_name(workspace, name='Bank-marketing')A
+ds = Dataset.get_by_name(workspace, name='Bank-marketing')
 
 x, y = clean_data(ds)
 
 
 
-x_train, y_train, x_test, y_test = train_test_split(x,y, test_size = 0.33)
+x_train, x_test, y_train, y_test = train_test_split(x,y, test_size = 0.33)
 
 run = Run.get_context()
 
@@ -72,6 +77,8 @@ def main():
 
     run.log("Regularization Strength:", np.float(args.C))
     run.log("Max iterations:", np.int(args.max_iter))
+    run.log("X_train", x_train)
+    run.log("Y_train", y_train)
 
     model = LogisticRegression(C=args.C, max_iter=args.max_iter).fit(x_train, y_train)
 
