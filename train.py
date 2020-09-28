@@ -9,20 +9,8 @@ from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
 from azureml.core.run import Run
 from azureml.data.dataset_factory import TabularDatasetFactory
+from azureml.core import Workspace, Dataset
 
-# TODO: Create TabularDataset using TabularDatasetFactory
-# Data is located at:
-# "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
-
-ds = ### YOUR CODE HERE ###
-
-x, y = clean_data(ds)
-
-# TODO: Split data into train and test sets.
-
-### YOUR CODE HERE ###a
-
-run = Run.get_context()
 
 def clean_data(data):
     # Dict for cleaning data
@@ -49,6 +37,26 @@ def clean_data(data):
     x_df["poutcome"] = x_df.poutcome.apply(lambda s: 1 if s == "success" else 0)
 
     y_df = x_df.pop("y").apply(lambda s: 1 if s == "yes" else 0)
+
+    return x_df.to_numpy(), y_df.to_numpy()
+
+subscription_id = '30d182b7-c8c4-421c-8fa0-d3037ecfe6d2'
+resource_group = 'aml-quickstarts-113416'
+workspace_name = 'quick-starts-ws-113416'
+
+workspace = Workspace(subscription_id, resource_group, workspace_name)
+
+ds = Dataset.get_by_name(workspace, name='Bank-marketing')A
+
+x, y = clean_data(ds)
+
+
+
+x_train, y_train, x_test, y_test = train_test_split(x,y, test_size = 0.33)
+
+run = Run.get_context()
+
+
     
 
 def main():
@@ -57,6 +65,8 @@ def main():
 
     parser.add_argument('--C', type=float, default=1.0, help="Inverse of regularization strength. Smaller values cause stronger regularization")
     parser.add_argument('--max_iter', type=int, default=100, help="Maximum number of iterations to converge")
+    parser.add_argument('--batch_size', type=int, default=32, help="batch size")
+    parser.add_argument('--learning_rate', type=float, default=1.0, help="learning rate")
 
     args = parser.parse_args()
 
