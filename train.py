@@ -57,7 +57,20 @@ def main():
 
     # workspace = Workspace(subscription_id, resource_group, workspace_name)
 
-    workspace = Workspace.from_config()
+    # azureml-core of version 1.0.72 or higher is required
+# azureml-dataprep[pandas] of version 1.1.34 or higher is required
+    #from azureml.core import Workspace, Dataset
+
+    subscription_id = '422c78cb-7b9f-41e7-a94c-e144f7afde5e'
+    resource_group = 'aml-quickstarts-114833'
+    workspace_name = 'quick-starts-ws-114833'
+
+    workspace = Workspace(subscription_id, resource_group, workspace_name)
+
+    #dataset = Dataset.get_by_name(workspace, name='bank-marketing')
+    #dataset.to_pandas_dataframe()
+
+    #workspace = Workspace.from_config()
 
     ds = Dataset.get_by_name(workspace, name='Bank-marketing')
 
