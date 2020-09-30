@@ -49,28 +49,13 @@ def clean_data(data):
     
 
 def main():
-    # subscription_id = 'b4a122b5-b4d5-40e7-9878-57b87adf4a8b'
-    # resource_group = 'aml-quickstarts-113996'
-    # workspace_name = 'quick-starts-ws-113996'
-
-
-
-    # workspace = Workspace(subscription_id, resource_group, workspace_name)
-
-    # azureml-core of version 1.0.72 or higher is required
-# azureml-dataprep[pandas] of version 1.1.34 or higher is required
-    #from azureml.core import Workspace, Dataset
-
-    subscription_id = '422c78cb-7b9f-41e7-a94c-e144f7afde5e'
-    resource_group = 'aml-quickstarts-114833'
-    workspace_name = 'quick-starts-ws-114833'
+    subscription_id = '3ec87f2b-33cf-4aed-b36f-750175813524'
+    resource_group = 'aml-quickstarts-118330'
+    workspace_name = 'quick-starts-ws-118330'
 
     workspace = Workspace(subscription_id, resource_group, workspace_name)
 
-    #dataset = Dataset.get_by_name(workspace, name='bank-marketing')
-    #dataset.to_pandas_dataframe()
-
-    #workspace = Workspace.from_config()
+    
 
     ds = Dataset.get_by_name(workspace, name='Bank-marketing')
 
