@@ -36,9 +36,10 @@ def clean_data(data):
     x_df["day_of_week"] = x_df.day_of_week.map(weekdays)
     x_df["poutcome"] = x_df.poutcome.apply(lambda s: 1 if s == "success" else 0)
 
-    y_df = x_df.pop("y").apply(lambda s: 1 if s == "yes" else 0)
+    #y_df = x_df.pop("y").apply(lambda s: 1 if s == "yes" else 0)
+    x_df["y"] = x_df.y.apply(lambda s: 1 if s == "yes" else 0)
 
-    return x_df, y_df
+    return x_df
 
 
 
