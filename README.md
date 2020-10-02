@@ -7,9 +7,9 @@ This model is then compared to an Azure AutoML run.
 
 ## Summary
 
-In this project, we build a classifier to predict if the customer of the bank will subscribe to a term deposit with the bank or not. We explore and compare the HyperDrive option of finding the best hyperparameters for logistic regression using the Sklearn library, with the AutoML option which explores different types of classifaction models and hyperparameters.
+In this project, we build a classifier to predict if the customer of the bank will subscribe to a term deposit with the bank or not. We explore and compare the HyperDrive option, of finding the best hyperparameters for logistic regression using the Sklearn library, with the AutoML option which explores different types of classifaction models and hyperparameters.
 
-With the limitation of using interactive authentication, we have explored the option of just 4 runs to find the best hyperparameters using HyperDrive. The best performance with the HyperDrive option is the accuracy of 91.22 %. Similarly, we have just used 4 interations of AutoML options so that we can compare the two options. With AutoML the best performance results in accuracy of 91.61 % with the model: VotingEnsemble.
+We are exploring 12 runs to find the best hyperparameters using HyperDrive. The best performance with the HyperDrive option is the accuracy of 91.60 %. Similarly, we have just used 12 iterations for the AutoML option so that we can compare the two options. With AutoML the best performance results in accuracy of 91.66 % with the model: VotingEnsemble.
 
 
 ## Scikit-learn Pipeline
@@ -23,12 +23,12 @@ We have multiple options for early termination policy, for our runs we have used
 
 ## AutoML
 
-In the AutoML option, we have used the task as "clasification" and primary metric as "accuracy" and iterations as 4, so that we can compare this option with the HyperDrive option. The best run with AutoML was given by the model: VotingEnsemble with accuracy of 91.61%.
+In the AutoML option, we have used the task as "clasification" and primary metric as "accuracy" and iterations as 12, so that we can compare this option with the HyperDrive option. The best run with AutoML was given by the model: VotingEnsemble with accuracy of 91.66%.
 
 ## Pipeline comparison
 
-In our experiments, the performance of 2 options is comparable, with HyperDrive option having an accuracy of 91.22 % while AutoML option having accuracy of 91.61 %. Even with consideration to the limitation of our experiments and limited data points, we can say that AutoML will result in a better performance as AutoML go through multiple classifciation models while the HyperDrive option just uses the Logistic Regression Algorithm.
+In our experiments, the performance of 2 options is comparable, with HyperDrive option having an accuracy of 91.60 % while AutoML option having accuracy of 91.66 %. Even with consideration to the limitation of our experiments and limited data points, we can say that AutoML will result in a better performance as AutoML go through multiple classifciation models while the HyperDrive option just uses the Logistic Regression Algorithm.
 
 ## Future work
 
-We can use Service principal to automate the authentication, allowing us to do considerably higher number of iteration. With HyperDrive, once we have done an intial search using Random Sampling, we can refine and narrow our search to find the best hyperparameters and use grid sampling to do so. With AutoML, we can increase the number of iteration allowing us to go through more models supported by AutoML for classifcation. Trying more models will help us find the best model for the problem in hand.
+With HyperDrive, we can increase the max_total_runs parameter allowing us to go through more hyperparameter options. We are doing intial search using Random Sampling, we can refine and narrow our search to find the best hyperparameters and use grid sampling to do so. With AutoML, we can increase the number of iteration allowing us to go through more models supported by AutoML for classifcation. Trying more models will help us find the best model for the problem in hand.
