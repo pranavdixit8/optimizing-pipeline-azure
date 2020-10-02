@@ -58,9 +58,11 @@ def main():
 
     
 
-    ds = Dataset.get_by_name(workspace, name='Bank-marketing')
+    ds = Dataset.Tabular.from_delimited_files("https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv")
 
-    x, y = clean_data(ds)
+    x= clean_data(ds)
+
+    y = x.pop("y")
 
 
 
@@ -80,8 +82,7 @@ def main():
 
     run.log("Regularization Strength:", np.float(args.C))
     run.log("Max iterations:", np.int(args.max_iter))
-    run.log("X_train", x_train)
-    run.log("Y_train", y_train)
+    
 
     model = LogisticRegression(C=args.C, max_iter=args.max_iter).fit(x_train, y_train)
 
