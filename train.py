@@ -49,12 +49,6 @@ def clean_data(data):
 
 def main():
 
-    subscription_id = '572f8abf-a1a0-4b78-8c6d-3630739c72b5'
-    resource_group = 'aml-quickstarts-119497'
-    workspace_name = 'quick-starts-ws-119497'
-
-    workspace = Workspace(subscription_id, resource_group, workspace_name)
-
     ds = TabularDatasetFactory.from_delimited_files("https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv")
 
     x= clean_data(ds)
