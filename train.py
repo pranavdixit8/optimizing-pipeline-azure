@@ -50,13 +50,11 @@ def clean_data(data):
     
 
 def main():
-    subscription_id = '3ec87f2b-33cf-4aed-b36f-750175813524'
-    resource_group = 'aml-quickstarts-118330'
-    workspace_name = 'quick-starts-ws-118330'
+    subscription_id = '374bdf1a-c648-4244-a317-f0d1ef4b85c7'
+    resource_group = 'aml-quickstarts-119476'
+    workspace_name = 'quick-starts-ws-119476'
 
     workspace = Workspace(subscription_id, resource_group, workspace_name)
-
-    
 
     ds = Dataset.Tabular.from_delimited_files("https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv")
 
@@ -65,8 +63,7 @@ def main():
     y = x.pop("y")
 
 
-
-    x_train, x_test, y_train, y_test = train_test_split(x,y, test_size = 0.33)
+    x_train, x_test, y_train, y_test = train_test_split(x,y, test_size = 0.20)
 
     run = Run.get_context()
 
